@@ -2,38 +2,65 @@
 
 
 
-//First need an input from the user choosing either rock, paper, or scissors
+        //First need an input from the user choosing either rock, paper, or scissors
+        //Make all inputs lowercase then change the first letter to capital so they can be compared equally
 
 getUserChoice = function (){
     let userChoice = (prompt("Choose 'rock', 'paper', or 'scissors'.", undefined)).toLowerCase()
     userChoice = (userChoice.slice(0,1).toUpperCase() + userChoice.slice(1,))
+    return userChoice
     console.log(userChoice)
 }
 
+        //Computer's choice needs to be generated after the human input choice is made
+        //Create a function that randomly generates a number and assign 1/3 of the possible outcomes to each R/P/S choice
+
 getComputerChoice = function() {
     let randomizer = Math.floor((Math.random() * 1000))
-    console.log(randomizer)
+    let computerChoice = undefined
 
     if (randomizer <= 333) {
-            return "Rock";
+            return computerChoice = "Rock";
     }   else if (randomizer >= 666){
-            return "Paper";
+            return computerChoice = "Paper";
     }   else {
-            return "Scissors";
+            return computerChoice = "Scissors";
     }
 
 }
 
 
-
-console.log(getComputerChoice())
-
-
-        //Make all inputs lowercase then change the first letter to capital so they can be compared equally
         //Compare human's input against computer's choice
 
-        //Computer's choice needs to be generated after the human input choice is made
-            //Create a function that randomly generates a number and assign 1/3 of the possible outcomes to each R/P/S choice
+let playGame = function() {
+    let userChoice = undefined
+    let computerChoice = undefined
+    
+    userChoice = getUserChoice()
+    console.log("You picked " + userChoice)
+    computerChoice = getComputerChoice()
+    console.log("The computer chose " + computerChoice)
+
+    if ((userChoice === "Rock") || (userChoice === "Scissors") || (userChoice === "Paper")) {
+
+            if ((userChoice === "Paper") && (computerChoice === "Rock")) {
+                console.log("You win!");
+        }   else if ((userChoice === "Rock") && (computerChoice === "Scissors")) {
+                console.log("You win!");
+        }   else if ((userChoice === "Scissors") && (computerChoice === "Paper")) {
+                console.log("You win!");
+        }   else {
+                console.log("You lose!")
+        }
+}   else {
+        console.log("Enter a valid input of rock, paper, or scissors")
+}
+}
+
+playGame()
+
+
+
 
         /*Possible outcomes are
             if user's choice does not equal rock, or paper, or scissors
@@ -66,4 +93,3 @@ console.log(getComputerChoice())
 
 // getUserChoice()
 // getComputerChoice()
-
