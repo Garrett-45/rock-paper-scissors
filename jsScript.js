@@ -1,7 +1,3 @@
-
-
-
-
         //First need an input from the user choosing either rock, paper, or scissors
         //Make all inputs lowercase then change the first letter to capital so they can be compared equally
 
@@ -28,41 +24,10 @@ getComputerChoice = function() {
     }
 
 }
+        /* Compare human's input against computer's choice
 
 
-        //Compare human's input against computer's choice
-
-let playGame = function() {
-    let userChoice = undefined
-    let computerChoice = undefined
-    
-    userChoice = getUserChoice()
-    console.log("You picked " + userChoice)
-    computerChoice = getComputerChoice()
-    console.log("The computer chose " + computerChoice)
-
-    if ((userChoice === "Rock") || (userChoice === "Scissors") || (userChoice === "Paper")) {
-
-            if ((userChoice === "Paper") && (computerChoice === "Rock")) {
-                console.log("You win!");
-        }   else if ((userChoice === "Rock") && (computerChoice === "Scissors")) {
-                console.log("You win!");
-        }   else if ((userChoice === "Scissors") && (computerChoice === "Paper")) {
-                console.log("You win!");
-        }   else {
-                console.log("You lose!")
-        }
-}   else {
-        console.log("Enter a valid input of rock, paper, or scissors")
-}
-}
-
-playGame()
-
-
-
-
-        /*Possible outcomes are
+        Possible outcomes are
             if user's choice does not equal rock, or paper, or scissors
                 Output message that user must choose a valid response including no punctuation or extra spaces
 
@@ -87,8 +52,113 @@ playGame()
                 Output message about user's loss
                 Start game over
 
-        Make a game
         */
+
+let playGame = function() {
+    const userChoice = getUserChoice()
+    const computerChoice = getComputerChoice()
+        
+    console.log("You picked " + userChoice)
+    console.log("The computer chose " + computerChoice)
+
+    if ((userChoice === "Rock") || (userChoice === "Scissors") || (userChoice === "Paper")) {
+
+            if ((userChoice === "Paper") && (computerChoice === "Rock")) {
+                console.log("You win!");
+                return true;
+        }   else if ((userChoice === "Rock") && (computerChoice === "Scissors")) {
+                console.log("You win!");
+                return true;                
+        }   else if ((userChoice === "Scissors") && (computerChoice === "Paper")) {
+                console.log("You win!");
+                return true;
+        }   else if (userChoice === computerChoice) {
+                console.log("Tie! Play Again!")
+                return null                               
+        }   else {
+                console.log("You lose!")
+                return false                
+        }
+        }   else {
+                console.log("Enter a valid input of rock, paper, or scissors")}
+}
+
+
+
+/* 
+
+Create a game that goes through five rounds of RPS and picks a winner based on who won the majority of the games.
+
+Use a variable that starts at zero to represent the amount of times the player has won and another for the computer.
+If the playthrough returns a true value, increment the playerscore variable.
+If the playthrough returns a false value, increment the computerscore variable
+After each game, check if the player has a score of 3 or more.
+If the player hits a score of 3, end the game and notify the player that they won.
+If the computer hits a score of 3, end the game and notify the player that they lost. 
+On the 5th game, check to see who has more points. If the player has more, tell them they win otherwise tell them they lost.
+
+*/
+
+const playRounds = function() {
+        console.log("Play the best of five games of Rock, Paper, Scissors, with the computer!")
+        let playerScore = 0
+        let computerScore = 0
+
+        
+        if (playGame() == true) {
+                ++playerScore
+        } else {
+                ++ computerScore
+        }
+        
+        if (playGame() == true) {
+                ++playerScore
+        } else {
+                ++ computerScore
+        }
+                
+        if (playGame() == true) {
+                ++playerScore
+        } else {
+                ++ computerScore
+        }
+
+        
+        if (playGame() == true) {
+                ++playerScore
+        } else {
+                ++ computerScore
+        }
+        
+        if (playGame() == true) {
+                ++playerScore
+        } else {
+                ++ computerScore
+        }
+
+
+        if (playerScore > computerScore) {
+                return true
+        } else if (computerScore > playerScore) {
+                return false
+        } else {
+                return "tie"
+        }
+
+} 
+
+
+playRounds()
+
+if (playRounds === true) {
+        console.log("You win!")
+} else if (playRounds === false){
+        console.log("You lose!")
+} else {
+        console.log("It's a tie!")
+}
+
+
 
 
 // getUserChoice()
